@@ -87,6 +87,8 @@ Broadcasting in a computer network is transmitting a message which **does not re
 
 One computer in a network sends a data packet to all other users at the same time. The sender does not need to indicate recipient addresses – this is how the broadcast process differs from unicast, where only a single known recipient is addressed. The general advantage of broadcasting is that information can be distributed without having to be transmitted multiple times.
 
+![broadcast diagram](img/broadcast.png)
+
 A special address is required to carry out the procedure, which replaces the recipient addresses in question. This broadcast IP is of particular use if the addresses of the individual network users are not known.
 
 The sender initiates the broadcast connection and provides the address at which the recipients can contact them. A broadcast works in a similar way to a mailing list: the recipients are not visible to each other and the sender has no way of knowing the addresses of the network users. Only if the users contact the sender one-to-one do they disclose their own address.
@@ -276,6 +278,8 @@ Each device connected to the Internet has a unique IP address which other machin
 
 The process of DNS resolution involves converting a hostname (such as www.example.com) into a computer-friendly IP address (such as 192.168.1.1). An IP address is given to each device on the Internet, and that address is necessary to find the appropriate Internet device - like a street address is used to find a particular home. When a user wants to load a webpage, a translation must occur between what a user types into their web browser (example.com) and the machine-friendly address necessary to locate the example.com webpage.
 
+![DNS diagram](img/DNS.png)
+
 ## What_are_the_rules_to_make_2_devices_communicate_using_IP_addresses
 
 [IP adresses](https://www.homenethowto.com/basics/ip-addresses/#:~:text=Computers%20that%20belong%20to%20different,each%20other%20via%20a%20router.&text=An%20IP%20address%20is%20divided,forward%20traffic%20towards%20different%20destinations.)
@@ -283,6 +287,8 @@ The process of DNS resolution involves converting a hostname (such as www.exampl
 On a computer network, all devices that are connected to the same local network can *talk directly with each other*. But to do so they need to have *IP addresses* that **belong to the same IP network**. Computers that belong to *different IP networks* have to communicate with each other via a **router**.
 
 The **main purpose** of a router is *to be able to forward traffic towards different destinations*. A router **keeps track** of where different IP networks exist on the computer network. The main task of the router is to *forward traffic between those IP networks*.
+
+![IP_comunication](img/IP_comunication.png)
 
 ## How_does_routing_work_with_IP
 
