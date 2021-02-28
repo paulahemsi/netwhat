@@ -226,7 +226,7 @@ mnemonic devices to memorize the OSI network layers:
 *“All People Seem To Need Data Processing.”* (bottom to top)
 *“Please Do Not Throw Sausage Pizza Away.”* (top to bottom)
 
-![alt text](https://github.com/paulahemsi/netwhat/blob/img/OSI_layers.png?raw=true)
+![OSI layers](https://github.com/paulahemsi/netwhat/img/OSI_layers.png?raw=true)
 
 The TCP/IP model is a more concise framework, with only 4 layers:
 
