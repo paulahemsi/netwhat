@@ -201,17 +201,24 @@ The User Datagram Protocol, or UDP, is a communication protocol used across the 
 
 [network layers explained](https://www.plixer.com/blog/network-layers-explained/)
 
-While TCP/IP is the newer model, the Open Systems Interconnection (OSI) model is still referenced a lot to describe network layers. The OSI model was developed by the International Organization for Standardization. There are 7 layers:
+While TCP/IP is the newer model, the Open Systems Interconnection (OSI) model is still referenced a lot to describe network layers. The **OSI model** was developed by the International Organization for Standardization. There are 7 layers:
 
-1. **Physical** (e.g. cable, RJ45) - Actual hardware sits at this layer. It transmits signals over media.
-2. **Data Link** (e.g. MAC, switches) - Translates binary (or BITs) into signals and allows upper layers to access media.
-3. **Network** (e.g. IP, routers) - This layer determines how data is sent to the receiving device. It’s responsible for packet forwarding, routing, and addressing.
-4. **Transport** (e.g. TCP, UDP, port numbers) - This layer coordinates data transfer between system and hosts, including error-checking and data recovery.
-5. **Session** (e.g. Syn/Ack) - This layer establishes and terminates connections between devices. It also determines which packets belong to which text and image files.
-6. **Presentation** (e.g. encryption, ASCII, PNG, MIDI) - This layer converts data to and from the Application layer. In other words, it translates application formatting to network formatting and vice versa. This allows the different layers to understand each other.
-7. **Application** (e.g. SNMP, HTTP, FTP) - Most of what the user actually interacts with is at this layer. Web browsers and other internet-connected applications (like Skype or Outlook) use Layer 7 application protocols.
+1. **Physical** (e.g. cable, RJ45) - Actual hardware sits at this layer. It transmits signals over media. This layer includes the physical equipment involved in the data transfer, such as the cables and switches. This is also the layer where the data gets converted into a bit stream, which is a string of 1s and 0s. The physical layer of both devices must also agree on a signal convention so that the 1s can be distinguished from the 0s on both devices.
+
+2. **Data Link** (e.g. MAC, switches) - Translates binary (or BITs) into signals and allows upper layers to access media. The data link layer is very similar to the network layer, except the data link layer facilitates data transfer between two devices on the SAME network. The data link layer takes packets from the network layer and breaks them into smaller pieces called frames. Like the network layer, the data link layer is also responsible for flow control and error control in intra-network communication (The transport layer only does flow control and error control for inter-network communications).
+
+3. **Network** (e.g. IP, routers) - This layer determines how data is sent to the receiving device. It’s responsible for packet forwarding, routing, and addressing. The network layer is responsible for facilitating data transfer between two different networks. If the two devices communicating are on the same network, then the network layer is unnecessary. The network layer breaks up segments from the transport layer into smaller units, called packets, on the sender’s device, and reassembling these packets on the receiving device. The network layer also finds the best physical path for the data to reach its destination; this is known as routing.
+
+4. **Transport** (e.g. TCP, UDP, port numbers) - This layer coordinates data transfer between system and hosts, including error-checking and data recovery. The transport layer is also responsible for flow control and error control. Flow control determines an optimal speed of transmission to ensure that a sender with a fast connection doesn’t overwhelm a receiver with a slow connection. The transport layer performs error control on the receiving end by ensuring that the data received is complete, and requesting a retransmission if it isn’t.
+
+5. **Session** (e.g. Syn/Ack) - This layer establishes and terminates connections between devices. It also determines which packets belong to which text and image files.The session layer also synchronizes data transfer with checkpoints. For example, if a 100 megabyte file is being transferred, the session layer could set a checkpoint every 5 megabytes. In the case of a disconnect or a crash after 52 megabytes have been transferred, the session could be resumed from the last checkpoint, meaning only 50 more megabytes of data need to be transferred. Without the checkpoints, the entire transfer would have to begin again from scratch.
+
+6. **Presentation** (e.g. encryption, ASCII, PNG, MIDI) - This layer converts data to and from the Application layer. In other words, it translates application formatting to network formatting and vice versa. This allows the different layers to understand each other. Finally the presentation layer is also responsible for compressing data it receives from the application layer before delivering it to layer 5. This helps improve the speed and efficiency of communication by minimizing the amount of data that will be transferred.
+
+7. **Application** (e.g. SNMP, HTTP, FTP) - Most of what the user actually interacts with is at this layer. Web browsers and other internet-connected applications (like Skype or Outlook) use Layer 7 application protocols. But it should be made clear that client software applications are not part of the application layer; rather the application layer is responsible for the protocols and data manipulation that the software relies on.
 
 mnemonic devices to memorize the OSI network layers: 
+
 *“All People Seem To Need Data Processing.”* (bottom to top)
 *“Please Do Not Throw Sausage Pizza Away.”* (top to bottom)
 
@@ -222,11 +229,36 @@ The TCP/IP model is a more concise framework, with only 4 layers:
 3. **Transport** (or Host-to-Host) - Also called the Host-to-Host layer. This layer is similar to the OSI model’s L4.
 4. **Application** (or Process) - Also called the Process layer, this layer combines the OSI model’s L5, L6, and L7.
 
-mnemonic device for the TCP/IP model: *“Armadillos Take In New Ants.”*
+mnemonic device for the TCP/IP model: 
+*“Armadillos Take In New Ants.”*
 
 ## What_is_the_OSI_model
 
+[the OSI model](https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi/)
+
+The Open Systems Interconnection (OSI) model is a conceptual model created by the International Organization for Standardization which enables diverse communication systems to communicate using standard protocols. In plain English, the OSI provides a **standard** for **different computer systems** to **be able to communicate with each other**.
+
+The OSI model can be seen as a **universal language for computer networking**. It’s based on the concept of splitting up a communication system into seven abstract layers, each one stacked upon the last.
+
+Although the modern Internet doesn’t strictly follow the OSI model (it more closely follows the simpler Internet protocol suite), the OSI model is *still very useful for troubleshooting* network problems. Whether it’s one person who can’t get their laptop on the Internet, or a web site being down for thousands of users, the OSI model can help to break down the problem and isolate the source of the trouble. If the problem can be narrowed down to one specific layer of the model, a lot of unnecessary work can be avoided.
+
+> Real world example from OSI layers: Mr. Cooper wants to send Ms. Palmer an email. Mr. Cooper composes his message in an email application on his laptop and then hits ‘send’. His email application will pass his email message over to the application layer, which will pick a protocol (SMTP) and pass the data along to the presentation layer. The presentation layer will then compress the data and then it will hit the session layer, which will initialize the communication session.
+>
+>The data will then hit the sender’s transportation layer where it will be segmented, then those segments will be broken up into packets at the network layer, which will be broken down even further into frames at the data link layer. The data link layer will then deliver those frames to the physical layer, which will convert the data into a bitstream of 1s and 0s and send it through a physical medium, such as a cable.
+>
+>Once Ms. Palmer’s computer receives the bit stream through a physical medium (such as her wifi), the data will flow through the same series of layers on her device, but in the opposite order. First the physical layer will convert the bitstream from 1s and 0s into frames that get passed to the data link layer. The data link layer will then reassemble the frames into packets for the network layer. The network layer will then make segments out of the packets for the transport layer, which will reassemble the segments into one piece of data.
+>
+>The data will then flow into the receiver's session layer, which will pass the data along to the presentation layer and then end the communication session. The presentation layer will then remove the compression and pass the raw data up to the application layer. The application layer will then feed the human-readable data along to Ms. Palmer’s email software, which will allow her to read Mr. Cooper’s email on her laptop screen.
+
 ## What_is_a_DHCP_server_and_the_DHCP_protocol
+
+A DHCP Server is a network server that automatically provides and assigns IP addresses, default gateways and other network parameters to client devices. It relies on the standard protocol known as Dynamic Host Configuration Protocol or DHCP to respond to broadcast queries by clients.
+
+[wikipedia](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol)
+
+The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used on Internet Protocol (IP) local area networks. A DHCP server must be present on the network. A device connected to the network requests an IP address from the DHCP server using the DHCP protocol;[1] the server assigns a unique address to the device, identifying it for TCP/IP communication, and supplies other network configuration parameters.[1] In the absence of a DHCP server, a device that needs an IP address must be manually assigned a static address by a network administrator, or must assign itself an APIPA address (which will not enable it to communicate outside its local subnet). A device configured to use dynamic (DHCP) addressing that is connected to a different network will be assigned an address on that network without needing to be reconfigured. However if the address of a device must be known—for example, a printer which processes print jobs sent to its IP address—a known static address is required.
+
+DHCP can be implemented on networks ranging in size from home networks to large campus networks and regional ISP networks.[2] Many routers and residential gateways can act as DHCP servers. Most residential network routers receive a globally unique IP address within the ISP network. Within a local network, a DHCP server assigns a local IP address to each device connected to the network.
 
 ## What_is_a_DNS_server_and_the_DNS_protocol
 
