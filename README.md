@@ -53,6 +53,10 @@ and the minumiu is 0 = 00000000
 (256 possible combinations)
 But in the host section there is a catch. We **cannot** use the *firts* or *last* IP address, these are reserved. The first is the network address and the last is a broadcast address, used to send messages to all computers in the network. So we only have 254 usable host in a netmask like *255.255.255.0*.
 
+Each IP network has a so-called Network Address which is the “name” of the IP network. If you wanted to tell somebody which IP network a computer is located within you would always tell them the first (lowest numbered) address on the IP network, which is the **Network Address**.
+
+So in the end, there are 254 available addresses that can be used in a home network (class C). Normally the **home router** will use one of those addresses, and the rest are available for your computers and other devices.
+
 The Internet protocol version 4 (**IPv4**) defines an IP address as a **32-bit** number. Due to the *increasing need* for and using up of available IPv4 addresses, a new IP version (**IPv6**) with **128** bits for the IP address was developed in 1995. It became a standard in December 1998. In July 2017, a final definition of the protocol was published. The IPv6 application has been running since the middle of the 2000s.
 
 ## What_is_a_Netmask
@@ -222,6 +226,8 @@ mnemonic devices to memorize the OSI network layers:
 *“All People Seem To Need Data Processing.”* (bottom to top)
 *“Please Do Not Throw Sausage Pizza Away.”* (top to bottom)
 
+![alt text](https://github.com/paulahemsi/netwhat/blob/img/OSI_layers.png?raw=true)
+
 The TCP/IP model is a more concise framework, with only 4 layers:
 
 1. **Network Access** (or Link) - Also called the Link or Network Interface layer. This layer combines the OSI model’s L1 and L2.
@@ -264,15 +270,55 @@ DHCP can be implemented on networks ranging in size from home networks to large 
 
 [whats DNS](https://www.cloudflare.com/learning/dns/what-is-dns/)
 
-The Domain Name System (DNS) is the ##**phonebook of the Internet**. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.
+The Domain Name System (DNS) is the **phonebook of the Internet**. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. **DNS translates domain names to IP addresses** so browsers can load Internet resources.
 
-Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers eliminate the need for humans to memorize IP addresses such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).
+Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers **eliminate the need** for humans to **memorize IP addresses** such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).
+
+The process of DNS resolution involves converting a hostname (such as www.example.com) into a computer-friendly IP address (such as 192.168.1.1). An IP address is given to each device on the Internet, and that address is necessary to find the appropriate Internet device - like a street address is used to find a particular home. When a user wants to load a webpage, a translation must occur between what a user types into their web browser (example.com) and the machine-friendly address necessary to locate the example.com webpage.
 
 ## What_are_the_rules_to_make_2_devices_communicate_using_IP_addresses
 
+[IP adresses](https://www.homenethowto.com/basics/ip-addresses/#:~:text=Computers%20that%20belong%20to%20different,each%20other%20via%20a%20router.&text=An%20IP%20address%20is%20divided,forward%20traffic%20towards%20different%20destinations.)
+
+On a computer network, all devices that are connected to the same local network can *talk directly with each other*. But to do so they need to have *IP addresses* that **belong to the same IP network**. Computers that belong to *different IP networks* have to communicate with each other via a **router**.
+
+The **main purpose** of a router is *to be able to forward traffic towards different destinations*. A router **keeps track** of where different IP networks exist on the computer network. The main task of the router is to *forward traffic between those IP networks*.
+
 ## How_does_routing_work_with_IP
+
+IP Routing describes the **process of determining the path** for data to follow in order to **navigate from one computer or server to another**. A packet of data traverses from its source router through a web of routers across many networks until it finally reaches its destination router using a **routing algorithm**. The routing algorithm takes into account factors such as the *size of a packet* and its header to determine the *most efficient route* to the destination. When a packet has reached a router, the source and destination address of the packet are used in conjunction with a *routing table* (list that contains the routes to a certain network) to determine the next hop address. This process is repeated for the next router using its own routing table until the packet has reached its destination. Because the data is divided into packets, **each packet travels independently from each other** and is treated as such. As a result, each packet can be sent through a different route to the destination if necessary.
 
 ## What_is_a_default_gateway_for_routing
 
+[understanding default routes](https://www.juniper.net/documentation/en_US/junos/topics/concept/default-route-understanding.html)
+
+A **default route** is the route that takes effect when **no other route is available** for an IP destination address.
+
+If a packet is received on a routing device, the device first checks to see if the IP destination address is on one of the *device’s local subnets*. If the destination address is not local, the device checks its *routing table*. If the remote destination subnet is not listed in the routing table, the packet is **forwarded to the next hop toward the destination using the default route**. The default route generally has a next-hop address of another routing device, which performs the same process. The process repeats until a packet is delivered to the destination.
+
+The route evaluation process in each router uses the longest prefix match method to obtain the most specific route. The network with the longest subnet mask that matches the destination IP address is the next-hop network gateway.
+
+The default route in IPv4 is designated as 0.0.0.0/0 or simply 0/0. Similarly, in IPv6, the default route is specified as ::/0. The subnet mask /0 specifies all networks, and is the shortest match possible. A route lookup that does not match any other route uses this route if it is configured and active in the routing table. To be active, the configured next-hop address must be reachable.
+
+Administrators generally point the default route toward the routing device that has a connection to a network service provider. Therefore, packets with destinations outside the organization's local area network, typically destinations on the Internet or a wide area network, are forwarded to the routing device with the connection to that provider. The device to which the default route points is often called the default gateway.	
+
 ## What_is_a_port_from_an_IP_point_of_view_and_what_is_it_used_for_when_connecting_to_another_device
 
+[wikipedia](https://en.wikipedia.org/wiki/Port_(computer_networking))
+[what is a port?](https://whatismyipaddress.com/port?__cf_chl_jschl_tk__=aeb667864533e7bcf5d96877cd38fd618425d257-1614555118-0-AcT09XkLDEEoB_LhPz-7_NYNGrb5H-6oSuM-h4MlQAtx3Y8IauJTSU8ZNAH9S75zAfd30Iq8nAjy1PMJfjZDjHCBAzeobVKzz0aQT014UsPZXVWdfiO3pPXa_Dr2cCRbzmCCB0qlRqzjZdO5WcYruez1ztyQjgxqgVWpofCMlBLAHl3mSq_M_aKMeOYPiw-M0Q67HWS_0_d4eYGiN9lBhEYeJdUo3J2pEBPwoZszgnwKUIRiYJ-B3bU2mkWKDP2RBWqO8i3FgFfxKsJztxp9EtAqC3DngajD96dpciteUpj7d9VZCv5Uw_yjVcCxg8uxbtyz2IFt_eqB5OkwhLrR198OfpQ9IOxludL7YnmdGpXRhk4EFOuFZtD_qC4fQ447Qw)
+
+In computer networking, a port is a **communication endpoint**. At the software level, within an operating system, a port is a logical construct that identifies a specific process or a type of network service. A port is *identified* for each *transport protocol* and address combination by a *16-bit unsigned number*, known as the *port number*. The most common transport protocols that use port numbers are the Transmission Control Protocol (**TCP**) and the User Datagram Protocol (**UDP**).
+
+A **port number** is **always associated** with an **IP address** of a host and the **type of transport protocol** used for communication. It completes the destination or origination network address of a message. Specific port numbers are reserved to identify specific services so that an arriving packet can be easily forwarded to a running application. For this purpose, port numbers lower than 1024 identify the historically most commonly used services and are called the well-known port numbers. Higher-numbered ports are available for general use by applications and are known as ephemeral ports.
+
+Ports provide a multiplexing service for multiple services or multiple communication sessions at one network address. In the client–server model of application architecture, multiple simultaneous communication sessions may be initiated for the same service.
+
+>Picture a bay where there are lots of private boats are docked. The overall location is called a seaport, literally a port at or on the sea. Everyone wanting to dock there—requesting landing services—uses the same port. Seaports work with berth numbers assigned to individual boats. The port name and the berth number combine into the “who, what, and where” of boat identification.
+>
+>In geek-speak, berth numbers on the Internet are Internet Protocol or IP addresses, a user’s numerical identifier on the Internet. Depending on the connection type and service provider, a user’s IP address may or may not remain the same with each connection to or “docking” on the Internet.
+>
+>A computer port is a type of electronic, software- or programming-related docking point through which information flows from a program on your computer or to your computer from the Internet or another computer in a network. (A network, by the way, is a series of computers that are physically or electronically linked.)
+
+In computer terms, a computer or a program connects to somewhere or something else on the Internet via a port. Port numbers and the user’s IP address combine into the “who does what” information kept by every Internet Service Provider.
+
+Ports are numbered for consistency and programming. The most commonly used and best-known ports are those numbered 0 to 1023 dedicated for Internet use, but they can extend far higher for specialized purposes. Each port set or range is assigned specialized jobs or functions, and that’s generally all they do. Usually, all identical system services or functions use the same port numbers on the receiving servers.
