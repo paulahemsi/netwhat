@@ -1,6 +1,24 @@
 # netwhat
 an introduction to network problematics
 
+* [What is an IP address](#what_is_an_IP_address)
+* [What is a Netmask]
+* [What is the subnet of an IP with Netmask]
+* [What is the broadcast address of a subnet]
+* [What are the different ways to represent an ip address with the Netmask]
+* [What are the differences between public and private IPs]
+* [What is a class of IP addresses]
+* [What is TCP]
+* [What is UDP]
+* [What are the network layers]
+* [What is the OSI model]
+* [What is a DHCP server and the DHCP protocol]
+* [What is a DNS server and the DNS protocol]
+* [What are the rules to make 2 devices communicate using IP addresses]
+* [How does routing work with IP]
+* [What is a default gateway for routing]
+* [What is a port from an IP point of view and what is it used for when connecting to another device]
+
 
 
 Networks connect devices
@@ -9,7 +27,7 @@ the goal of the network is to move information from one device to another
 
 to share information, they must speak the same language -> protocols (instructions of how to handle the information)
 
-◦ #What is an IP address
+## What_is_an_IP_address
 
 [What is an IP Address – Definition and Explanation](https://www.kaspersky.com/resource-center/definitions/what-is-an-ip-address)
 
@@ -35,7 +53,7 @@ and the minumiu is 0 = 00000000
 (256 possible combinations)
 But in the host section there is a catch. We **cannot** use the *firts* or *last* IP address, these are reserved. The first is the network address and the last is a broadcast address, used to send messages to all computers in the network. So we only have 254 usable host in a netmask like *255.255.255.0*.
 
-◦ #What is a Netmask
+## What is a Netmask
 
 A subnet mask is always *paired* with an *IP* adress and is used to *identify* the **network section** and the **host section** of the address.
 
@@ -49,11 +67,11 @@ But instead of a full subnet mask, we often see it written as an forward slash a
 
 looking to the host part *29* (binary **00011101**), remember the firts (*192.54.103.0*) is the network address and the last (*192.54.103.255*) is a broadcast address.
 
-◦ #What is the subnet of an IP with Netmask
+## What is the subnet of an IP with Netmask
 
 A 32-bit IP address uniquely identifies a single device on an IP network. The 32 binary bits are divided into the host and network sections by the subnet mask but they are also broken into four 8-bit octets.
 
-◦ #What is the broadcast address of a subnet
+## What is the broadcast address of a subnet
 
 [What is a broadcast address and how does it work?](https://www.ionos.com/digitalguide/server/know-how/broadcast-address/)
 
@@ -65,30 +83,41 @@ A special address is required to carry out the procedure, which replaces the rec
 
 The broadcast address of a subnet is the last combination of the host bit's, reserved for send messages to all devices in the same networ (broadcast).
 
-◦ #What are the different ways to represent an ip address with the Netmask
+## What are the different ways to represent an ip address with the Netmask
 
 
 
-◦ #What are the differences between public and private IPs
-◦ #What is a class of IP addresses
+## What are the differences between public and private IPs
 
-| Class | Adresseses | Bits Network (**n**) Host (*h*) | Networks| Hosts
-| --- | --- |
-| A | 0.0.0.1 - 126.255.255.255| **n**.*h*.*h*.*h* | 126 (2^7 -2*) | 16.777.214 (2^24 - 2*) 
-| B | 128.0.0.0 - 191.255.255.255| **n**.**n**.*h*.*h* | 16.382 (2^14 -2*) | 65.534 (2^16 - 2*) 
-| C | 128.0.0.0 - 191.255.255.255| **n**.**n**.**n**.*h* | 2.097.150 (2^21 -2*) | 254 (2^8 - 2*) 
-| D | 224.0.0.0 - 239.255.255.255| - | - | Multicast 
-| E | 240.0.0.0 - 255.255.255.254| - | - | experimental tests 
-*firts IP:network last IP:broadcast
+## What is a class of IP addresses
 
-◦ #What is TCP
-◦ #What is UDP
-◦ #What are the network layers
-◦ #What is the OSI model
-◦ #What is a DHCP server and the DHCP protocol
-◦ #What is a DNS server and the DNS protocol
-◦ #What are the rules to make 2 devices communicate using IP addresses
-◦ #How does routing work with IP
-◦ #What is a default gateway for routing
-◦ #What is a port from an IP point of view and what is it used for when connecting
-to another device
+| Class | Adresseses                  | Bits Network (**n**) Host (*h*) | Networks            | Hosts                   |
+|:----- | :--------------------------:| :-----------------------------: | :-----------------: | -----------------------:
+|  A    | 0.0.0.1 - 126.255.255.255   | **n**.*h*.*h*.*h*               | 126 (2^7 -2*)       | 16.777.214 (2^24 - 2*)  |
+| B     | 128.0.0.0 - 191.255.255.255 | **n**.**n**.*h*.*h*             | 16.382 (2^14 -2*)   | 65.534 (2^16 - 2*)      |
+| C     | 128.0.0.0 - 191.255.255.255 | **n**.**n**.**n**.*h*           | 2.097.150 (2^21 -2*)| 254 (2^8 - 2*)          |
+| D     | 224.0.0.0 - 239.255.255.255 | -                               | -                   | Multicast               |
+| E     | 240.0.0.0 - 255.255.255.254 | -                               | -                   | experimental tests      |
+
+*firts IP:network last IP:broadcast*
+
+## What is TCP
+
+## What is UDP
+
+## What are the network layers
+
+## What is the OSI model
+
+## What is a DHCP server and the DHCP protocol
+
+## What is a DNS server and the DNS protocol
+
+## What are the rules to make 2 devices communicate using IP addresses
+
+## How does routing work with IP
+
+## What is a default gateway for routing
+
+## What is a port from an IP point of view and what is it used for when connecting to another device
+
