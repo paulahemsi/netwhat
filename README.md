@@ -155,7 +155,7 @@ As far as Internet security is concerned, the use of a **private** IP address is
 |:----- | :--------------------------:| :-----------------------------: | :-----------------: | -----------------------:|
 |  A    | 0.0.0.1 - 126.255.255.255   | **n**.*h*.*h*.*h*               | 126 (2^7 -2*)       | 16.777.214 (2^24 - 2*)  |
 | B     | 128.0.0.0 - 191.255.255.255 | **n**.**n**.*h*.*h*             | 16.382 (2^14 -2*)   | 65.534 (2^16 - 2*)      |
-| C     | 128.0.0.0 - 191.255.255.255 | **n**.**n**.**n**.*h*           | 2.097.150 (2^21 -2*)| 254 (2^8 - 2*)          |
+| C     | 192.0.0.0 - 223.255.255.255 | **n**.**n**.**n**.*h*           | 2.097.150 (2^21 -2*)| 254 (2^8 - 2*)          |
 | D     | 224.0.0.0 - 239.255.255.255 | -                               | -                   | Multicast               |
 | E     | 240.0.0.0 - 255.255.255.254 | -                               | -                   | experimental tests      |
 
@@ -164,12 +164,62 @@ As far as Internet security is concerned, the use of a **private** IP address is
 ## What_is_TCP
 
 [wikipedia](https://en.wikipedia.org/wiki/Transmission_Control_Protocol)
+[TCP-IP](https://www.cloudflare.com/pt-br/learning/ddos/glossary/tcp-ip/)
+[whats tcp?](https://www.fortinet.com/br/resources/cyberglossary/tcp-ip)
 
-The Transmission Control Protocol (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides reliable, ordered, and error-checked delivery of a stream of octets (bytes) between applications running on hosts communicating via an IP network. Major internet applications such as the World Wide Web, email, remote administration, and file transfer rely on TCP, which is part of the Transport Layer of the TCP/IP suite. SSL/TLS often runs on top of TCP.
+The *Transmission Control Protocol* (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides *reliable, ordered, and error-checked delivery* of a *stream of octets* (bytes) between applications running on hosts communicating via an IP network. Major internet applications such as the World Wide Web, email, remote administration, and file transfer rely on TCP, which is part of the Transport Layer of the TCP/IP suite. SSL/TLS often runs on top of TCP.
+
+The Transmission Control Protocol (TCP) is a communications standard that **enables application programs and computing devices to exchange messages over a network**. It is designed to send packets across the internet and ensure the successful delivery of data and messages over networks.
+
+TCP organizes data so that it can be transmitted between a server and a client. It **guarantees the integrity** of the data being communicated over a network. Before it transmits data, TCP establishes a connection between a source and its destination, which it ensures remains live until communication begins. It then *breaks large amounts of data into smaller packets*, while *ensuring data integrity is in place* throughout the process.
+
+As a result, TCP is used to transmit data from high-level protocols that need all data to arrive. These include peer-to-peer sharing protocols like File Transfer Protocol (FTP), Secure Shell (SSH), and Telnet. It is also used to send and receive email through Internet Message Access Protocol (IMAP), Post Office Protocol (POP), and Simple Mail Transfer Protocol (SMTP), and for web access through the Hypertext Transfer Protocol (HTTP).
+
+TCP and IP are separate protocols that work together to ensure data is delivered to its intended destination within a network. IP obtains and defines the address—the IP address—of the application or device the data must be sent to. TCP is then responsible for transporting data and ensuring it gets delivered to the destination application or device that IP has defined. 
+
+The TCP/IP relationship is similar to sending someone a message written on a puzzle through the mail. The message is written down and the puzzle is broken into pieces. Each piece then can travel through a different postal route, some of which take longer than others. When the puzzle pieces arrive after traversing their different paths, the pieces may be out of order. The Internet Protocol makes sure the pieces arrive at their destination address. The TCP protocol can be thought of as the puzzle assembler on the other side who puts the pieces together in the right order, asks for missing pieces to be resent, and lets the sender know the puzzle has been received. TCP maintains the connection with the sender from before the first puzzle piece is sent to after the final piece is sent.
+
+The four layers of the TCP/IP model are as follows:
+
+**Datalink layer:** The datalink layer defines how data should be sent, handles the physical act of sending and receiving data, and is responsible for transmitting data between applications or devices on a network. This includes defining how data should be signaled by hardware and other transmission devices on a network, such as a computer’s device driver, an Ethernet cable, a network interface card (NIC), or a wireless network. It is also referred to as the link layer, network access layer, network interface layer, or physical layer and is the combination of the physical and data link layers of the Open Systems Interconnection (OSI) model, which standardizes communications functions on computing and telecommunications systems.
+**Internet layer:** The internet layer is responsible for sending packets from a network and controlling their movement across a network to ensure they reach their destination. It provides the functions and procedures for transferring data sequences between applications and devices across networks.
+**Transport layer:** The transport layer is responsible for providing a solid and reliable data connection between the original application or device and its intended destination. This is the level where data is divided into packets and numbered to create a sequence. The transport layer then determines how much data must be sent, where it should be sent to, and at what rate. It ensures that data packets are sent without errors and in sequence and obtains the acknowledgment that the destination device has received the data packets.
+**Application layer:** The application layer refers to programs that need TCP/IP to help them communicate with each other. This is the level that users typically interact with, such as email systems and messaging platforms. It combines the session, presentation, and application layers of the OSI model.
 
 ## What_is_UDP
 
+An alternative to TCP is the *User Datagram Protocol* (UDP), which is used to establish low-latency connections between applications and speed up transmissions. TCP can be an expensive network tool as it includes absent or corrupted packets and protects data delivery with controls like acknowledgments, connection startup, and flow control. 
+
+*UDP does not provide error connection or packet sequencing nor does it signal a destination before it delivers data*, which makes it **less reliable** but **less expensive**. As such, it is a good option for time-sensitive situations, such as Domain Name System (DNS) lookup, Voice over Internet Protocol (VoIP), and streaming media.
+
+The User Datagram Protocol, or UDP, is a communication protocol used across the Internet for especially time-sensitive transmissions such as video playback or DNS lookups. It speeds up communications by not formally establishing a connection before data is transferred. This allows data to be transferred **very quickly**, but it can also **cause packets to become lost in transit** — and create **opportunities for exploitation** in the form of DDoS attacks.
+
 ## What_are_the_network_layers
+
+[network layers explained](https://www.plixer.com/blog/network-layers-explained/)
+
+While TCP/IP is the newer model, the Open Systems Interconnection (OSI) model is still referenced a lot to describe network layers. The OSI model was developed by the International Organization for Standardization. There are 7 layers:
+
+1. **Physical** (e.g. cable, RJ45) - Actual hardware sits at this layer. It transmits signals over media.
+2. **Data Link** (e.g. MAC, switches) - Translates binary (or BITs) into signals and allows upper layers to access media.
+3. **Network** (e.g. IP, routers) - This layer determines how data is sent to the receiving device. It’s responsible for packet forwarding, routing, and addressing.
+4. **Transport** (e.g. TCP, UDP, port numbers) - This layer coordinates data transfer between system and hosts, including error-checking and data recovery.
+5. **Session** (e.g. Syn/Ack) - This layer establishes and terminates connections between devices. It also determines which packets belong to which text and image files.
+6. **Presentation** (e.g. encryption, ASCII, PNG, MIDI) - This layer converts data to and from the Application layer. In other words, it translates application formatting to network formatting and vice versa. This allows the different layers to understand each other.
+7. **Application** (e.g. SNMP, HTTP, FTP) - Most of what the user actually interacts with is at this layer. Web browsers and other internet-connected applications (like Skype or Outlook) use Layer 7 application protocols.
+
+mnemonic devices to memorize the OSI network layers: 
+*“All People Seem To Need Data Processing.”* (bottom to top)
+*“Please Do Not Throw Sausage Pizza Away.”* (top to bottom)
+
+The TCP/IP model is a more concise framework, with only 4 layers:
+
+1. **Network Access** (or Link) - Also called the Link or Network Interface layer. This layer combines the OSI model’s L1 and L2.
+2. **Internet** - This layer is similar to the OSI model’s L3.
+3. **Transport** (or Host-to-Host) - Also called the Host-to-Host layer. This layer is similar to the OSI model’s L4.
+4. **Application** (or Process) - Also called the Process layer, this layer combines the OSI model’s L5, L6, and L7.
+
+mnemonic device for the TCP/IP model: *“Armadillos Take In New Ants.”*
 
 ## What_is_the_OSI_model
 
