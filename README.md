@@ -256,11 +256,17 @@ A DHCP Server is a network server that automatically provides and assigns IP add
 
 [wikipedia](https://en.wikipedia.org/wiki/Dynamic_Host_Configuration_Protocol)
 
-The Dynamic Host Configuration Protocol (DHCP) is a network management protocol used on Internet Protocol (IP) local area networks. A DHCP server must be present on the network. A device connected to the network requests an IP address from the DHCP server using the DHCP protocol;[1] the server assigns a unique address to the device, identifying it for TCP/IP communication, and supplies other network configuration parameters.[1] In the absence of a DHCP server, a device that needs an IP address must be manually assigned a static address by a network administrator, or must assign itself an APIPA address (which will not enable it to communicate outside its local subnet). A device configured to use dynamic (DHCP) addressing that is connected to a different network will be assigned an address on that network without needing to be reconfigured. However if the address of a device must be known—for example, a printer which processes print jobs sent to its IP address—a known static address is required.
+The **Dynamic Host Configuration Protocol** (DHCP) is a *network management protocol* used on Internet Protocol (**IP**) local area networks. A DHCP server must be present on the network. A device connected to the network requests an IP address *from* the **DHCP server** using the **DHCP protocol**; the server assigns a *unique address* to the device, **identifying** it for TCP/IP communication, and supplies *other network configuration parameters*. In the absence of a DHCP server, a device that needs an IP address must be manually assigned a static address by a network administrator, or must assign itself an APIPA address (which will not enable it to communicate outside its local subnet). A device configured to use dynamic (DHCP) addressing that is connected to a different network will be assigned an address on that network without needing to be reconfigured. However if the address of a device must be known—for example, a printer which processes print jobs sent to its IP address—a known static address is required.
 
-DHCP can be implemented on networks ranging in size from home networks to large campus networks and regional ISP networks.[2] Many routers and residential gateways can act as DHCP servers. Most residential network routers receive a globally unique IP address within the ISP network. Within a local network, a DHCP server assigns a local IP address to each device connected to the network.
+DHCP can be implemented on networks ranging in size from home networks to large campus networks and regional ISP networks.*Many routers and residential gateways can act as DHCP servers*. Most residential network routers receive a globally unique IP address within the ISP network. Within a **local network**, a DHCP server assigns a **local IP address** to each device connected to the network.
 
 ## What_is_a_DNS_server_and_the_DNS_protocol
+
+[whats DNS](https://www.cloudflare.com/learning/dns/what-is-dns/)
+
+The Domain Name System (DNS) is the ##**phonebook of the Internet**. Humans access information online through domain names, like nytimes.com or espn.com. Web browsers interact through Internet Protocol (IP) addresses. DNS translates domain names to IP addresses so browsers can load Internet resources.
+
+Each device connected to the Internet has a unique IP address which other machines use to find the device. DNS servers eliminate the need for humans to memorize IP addresses such as 192.168.1.1 (in IPv4), or more complex newer alphanumeric IP addresses such as 2400:cb00:2048:1::c629:d7a2 (in IPv6).
 
 ## What_are_the_rules_to_make_2_devices_communicate_using_IP_addresses
 
