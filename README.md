@@ -20,13 +20,6 @@ This [project](en.subject.pdf) is an introduction to network problematics
 * [What is a port from an IP point of view and what is it used for when connecting to another device](#what_is_a_port_from_an_IP_point_of_view_and_what_is_it_used_for_when_connecting_to_another_device)
 
 
-
-Networks connect devices
-
-the goal of the network is to move information from one device to another
-
-to share information, they must speak the same language -> protocols (instructions of how to handle the information)
-
 ## What_is_an_IP_address
 
 [What is an IP Address – Definition and Explanation](https://www.kaspersky.com/resource-center/definitions/what-is-an-ip-address)
@@ -35,7 +28,7 @@ An IP (Internet Protocol) address is a **unique address** that identifies a **de
 
 In essence, IP addresses are the **identifier** that **allows information to be sent between devices on a network**: they contain location information and make devices accessible for communication. The internet needs a way to differentiate between different computers, routers, and websites. IP addresses provide a way of doing so and form an essential part of how the internet works.
 
-An IP address is a *string of numbers separated by periods*. IP addresses are expressed as a set of four numbers — an example address might be 192.158.1.38. Each number in the set can *range from 0 to 255*. So, the full IP addressing range goes from 0.0.0.0 to 255.255.255.255.
+>An IP address is a *string of numbers separated by periods*. IP addresses are expressed as a set of four numbers — an example address might be 192.158.1.38. Each number in the set can *range from 0 to 255*. So, the full IP addressing range goes from 0.0.0.0 to 255.255.255.255.
 
 *IP addresses are not random*. They are mathematically produced and allocated by the Internet Assigned Numbers Authority (IANA), a division of the Internet Corporation for Assigned Names and Numbers (ICANN). ICANN is a non-profit organization that was established in the United States in 1998 to help maintain the security of the internet and allow it to be usable by all. Each time anyone registers a domain on the internet, they go through a domain name registrar, who pays a small fee to ICANN to register the domain.
 
@@ -46,7 +39,7 @@ An IP address is a *string of numbers separated by periods*. IP addresses are ex
 ---.---.---.---
 each part has 8 bits (1 byte)
 
-192.168.0.1 = 11000000.10101000.00000000.00000001
+>192.168.0.1 = 11000000.10101000.00000000.00000001
 
 so the maximum value is 255 = 11111111
 and the minumiu is 0 = 00000000
@@ -61,7 +54,7 @@ The Internet protocol version 4 (**IPv4**) defines an IP address as a **32-bit**
 
 ## What_is_a_Netmask
 
-A subnet mask is always *paired* with an *IP* adress and is used to *identify* the **network section** and the **host section** of the address.
+>A subnet mask is always *paired* with an *IP* adress and is used to *identify* the **network section** and the **host section** of the address.
 
 In its *simplest form* whenever you see *255* this is the *network* part of the address, whenever you see a *0* this is the *host* part os the address. The real way to see wich part is wich, is by looking at the subnet mask binary bits and compating it to the IP address **binary bits**. Anytime you see a **1** value, this bit is the network section anytime you see a **0**, it's the host section.
 
@@ -69,7 +62,7 @@ To be able to look at an IP adress and know wich class it belongs to, the easies
 
 But instead of a full subnet mask, we often see it written as an forward slash and then the number od Network bits.
 
-192.54.103.29 with the netmask 255.255.255.0 = *192.54.103.29/24*
+>192.54.103.29 with the netmask 255.255.255.0 = *192.54.103.29/24*
 
 looking to the host part *29* (binary **00011101**), remember the firts (*192.54.103.0*) is the network address and the last (*192.54.103.255*) is a broadcast address.
 
@@ -83,7 +76,7 @@ A 32-bit IP address uniquely identifies a single device on an IP network. The 32
 
 The broadcast address of a subnet is the last combination of the host bit's, reserved for send messages to all devices in the same network (broadcast).
 
-Broadcasting in a computer network is transmitting a message which **does not require a response** to *all users* of the *network*.
+>Broadcasting in a computer network is transmitting a message which **does not require a response** to *all users* of the *network*.
 
 One computer in a network sends a data packet to all other users at the same time. The sender does not need to indicate recipient addresses – this is how the broadcast process differs from unicast, where only a single known recipient is addressed. The general advantage of broadcasting is that information can be distributed without having to be transmitted multiple times.
 
@@ -97,9 +90,9 @@ Each network or subnet has a dedicated broadcast address, through which **all us
 
 In a broadcast address, *all the host bits are set to the binary value 1*, so if all host bits are set to the value 0, this is the subnet address.
 
-Example: IPv4 address 192.128.64.7/24
-
-192.128.64.7 is the IP address and 24 is the subnet mask. The **/24** *corresponds* to the subnet mask **255.255.255.0**. The IP address consists of 4 decimals – called octets – which are separated by points. One octet contains 8 bits, which is why IPv4 is a 32-bit address. Each octet can represent a number between 0 and 255. In this case, the **whole of the last octet consists of host bits**. Therefore, in this example, the broadcast address would be *192.128.64.255* – so all host bits at *1*.
+>Example: IPv4 address 192.128.64.7/24
+>
+>192.128.64.7 is the IP address and 24 is the subnet mask. The **/24** *corresponds* to the subnet mask **255.255.255.0**. The IP address consists of 4 decimals – called octets – which are separated by points. One octet contains 8 bits, which is why IPv4 is a 32-bit address. Each octet can represent a number between 0 and 255. In this case, the **whole of the last octet consists of host bits**. Therefore, in this example, the broadcast address would be *192.128.64.255* – so all host bits at *1*.
 
 Where can you find the broadcast address? The IP address is a 4-digit series of numbers with values from 0 to 255. A *broadcast IP address* is only **assigned once** in each network. It is **always** the *last IP address of the subnet*.
 
@@ -122,7 +115,7 @@ The **CIDR** (Classless Inter-Domain Routing) notation uses a slash/then the num
 
 [about public and privete IPs](https://help.keenetic.com/hc/en-us/articles/213965789-What-is-the-difference-between-a-public-and-private-IP-address-)
 
-All IPv4 addresses can be divided into two major groups: **global** (or public, external) - this group can also be called *'WAN addresses'* — those that are used on the Internet, and **private** (or local, internal) addresses — those that are used in the *local network* (LAN).
+>All IPv4 addresses can be divided into two major groups: **global** (or public, external) - this group can also be called *'WAN addresses'* — those that are used on the Internet, and **private** (or local, internal) addresses — those that are used in the *local network* (LAN).
 
 These are **public** (global) addresses that are **used on the Internet**. 
 A public IP address is an IP address that is used to access the Internet. Public IP addresses can be routed on the Internet, unlike private addresses. 
@@ -175,7 +168,7 @@ As far as Internet security is concerned, the use of a **private** IP address is
 
 The *Transmission Control Protocol* (TCP) is one of the main protocols of the Internet protocol suite. It originated in the initial network implementation in which it complemented the Internet Protocol (IP). Therefore, the entire suite is commonly referred to as TCP/IP. TCP provides *reliable, ordered, and error-checked delivery* of a *stream of octets* (bytes) between applications running on hosts communicating via an IP network. Major internet applications such as the World Wide Web, email, remote administration, and file transfer rely on TCP, which is part of the Transport Layer of the TCP/IP suite. SSL/TLS often runs on top of TCP.
 
-The Transmission Control Protocol (TCP) is a communications standard that **enables application programs and computing devices to exchange messages over a network**. It is designed to send packets across the internet and ensure the successful delivery of data and messages over networks.
+>The Transmission Control Protocol (TCP) is a communications standard that **enables application programs and computing devices to exchange messages over a network**. It is designed to send packets across the internet and ensure the successful delivery of data and messages over networks.
 
 TCP organizes data so that it can be transmitted between a server and a client. It **guarantees the integrity** of the data being communicated over a network. Before it transmits data, TCP establishes a connection between a source and its destination, which it ensures remains live until communication begins. It then *breaks large amounts of data into smaller packets*, while *ensuring data integrity is in place* throughout the process.
 
@@ -183,7 +176,7 @@ As a result, TCP is used to transmit data from high-level protocols that need al
 
 TCP and IP are separate protocols that work together to ensure data is delivered to its intended destination within a network. IP obtains and defines the address—the IP address—of the application or device the data must be sent to. TCP is then responsible for transporting data and ensuring it gets delivered to the destination application or device that IP has defined. 
 
-The TCP/IP relationship is similar to sending someone a message written on a puzzle through the mail. The message is written down and the puzzle is broken into pieces. Each piece then can travel through a different postal route, some of which take longer than others. When the puzzle pieces arrive after traversing their different paths, the pieces may be out of order. The Internet Protocol makes sure the pieces arrive at their destination address. The TCP protocol can be thought of as the puzzle assembler on the other side who puts the pieces together in the right order, asks for missing pieces to be resent, and lets the sender know the puzzle has been received. TCP maintains the connection with the sender from before the first puzzle piece is sent to after the final piece is sent.
+>The TCP/IP relationship is similar to sending someone a message written on a puzzle through the mail. The message is written down and the puzzle is broken into pieces. Each piece then can travel through a different postal route, some of which take longer than others. When the puzzle pieces arrive after traversing their different paths, the pieces may be out of order. The Internet Protocol makes sure the pieces arrive at their destination address. The TCP protocol can be thought of as the puzzle assembler on the other side who puts the pieces together in the right order, asks for missing pieces to be resent, and lets the sender know the puzzle has been received. TCP maintains the connection with the sender from before the first puzzle piece is sent to after the final piece is sent.
 
 The four layers of the TCP/IP model are as follows:
 
@@ -201,7 +194,7 @@ An alternative to TCP is the *User Datagram Protocol* (UDP), which is used to es
 
 *UDP does not provide error connection or packet sequencing nor does it signal a destination before it delivers data*, which makes it **less reliable** but **less expensive**. As such, it is a good option for time-sensitive situations, such as Domain Name System (DNS) lookup, Voice over Internet Protocol (VoIP), and streaming media.
 
-The User Datagram Protocol, or UDP, is a communication protocol used across the Internet for especially time-sensitive transmissions such as video playback or DNS lookups. It speeds up communications by not formally establishing a connection before data is transferred. This allows data to be transferred **very quickly**, but it can also **cause packets to become lost in transit** — and create **opportunities for exploitation** in the form of DDoS attacks.
+>The User Datagram Protocol, or UDP, is a communication protocol used across the Internet for especially time-sensitive transmissions such as video playback or DNS lookups. It speeds up communications by not formally establishing a connection before data is transferred. This allows data to be transferred **very quickly**, but it can also **cause packets to become lost in transit** — and create **opportunities for exploitation** in the form of DDoS attacks.
 
 ## What_are_the_network_layers
 
@@ -225,8 +218,10 @@ While TCP/IP is the newer model, the Open Systems Interconnection (OSI) model is
 
 mnemonic devices to memorize the OSI network layers: 
 
-*“All People Seem To Need Data Processing.”* (bottom to top)
-*“Please Do Not Throw Sausage Pizza Away.”* (top to bottom)
+
+>*“All People Seem To Need Data Processing.”* (bottom to top)
+
+>*“Please Do Not Throw Sausage Pizza Away.”* (top to bottom)
 
 ![OSI layers](img/OSI_layers.png)
 
@@ -238,7 +233,8 @@ The TCP/IP model is a more concise framework, with only 4 layers:
 4. **Application** (or Process) - Also called the Process layer, this layer combines the OSI model’s L5, L6, and L7.
 
 mnemonic device for the TCP/IP model: 
-*“Armadillos Take In New Ants.”*
+
+>*“Armadillos Take In New Ants.”*
 
 ## What_is_the_OSI_model
 
@@ -304,7 +300,7 @@ If a packet is received on a routing device, the device first checks to see if t
 
 The route evaluation process in each router uses the longest prefix match method to obtain the most specific route. The network with the longest subnet mask that matches the destination IP address is the next-hop network gateway.
 
-The default route in IPv4 is designated as 0.0.0.0/0 or simply 0/0. Similarly, in IPv6, the default route is specified as ::/0. The subnet mask /0 specifies all networks, and is the shortest match possible. A route lookup that does not match any other route uses this route if it is configured and active in the routing table. To be active, the configured next-hop address must be reachable.
+>The default route in IPv4 is designated as 0.0.0.0/0 or simply 0/0. Similarly, in IPv6, the default route is specified as ::/0. The subnet mask /0 specifies all networks, and is the shortest match possible. A route lookup that does not match any other route uses this route if it is configured and active in the routing table. To be active, the configured next-hop address must be reachable.
 
 Administrators generally point the default route toward the routing device that has a connection to a network service provider. Therefore, packets with destinations outside the organization's local area network, typically destinations on the Internet or a wide area network, are forwarded to the routing device with the connection to that provider. The device to which the default route points is often called the default gateway.	
 
